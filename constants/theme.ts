@@ -24,7 +24,9 @@ export const Colors = {
     icon: '#9BA1A6',
     tabIconDefault: '#9BA1A6',
     tabIconSelected: tintColorDark,
+    primary: '#5E46F4', // Added primary color
   },
+  primary: '#5E46F4', // Added primary color
 };
 
 export const Fonts = Platform.select({

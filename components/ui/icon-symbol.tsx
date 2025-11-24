@@ -1,7 +1,7 @@
 // Fallback for using MaterialIcons on Android and web.
 
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { SymbolWeight, SymbolViewProps } from 'expo-symbols';
+import { SymbolViewProps, SymbolWeight } from 'expo-symbols';
 import { ComponentProps } from 'react';
 import { OpaqueColorValue, type StyleProp, type TextStyle } from 'react-native';
 
@@ -18,7 +18,31 @@ const MAPPING = {
   'paperplane.fill': 'send',
   'chevron.left.forwardslash.chevron.right': 'code',
   'chevron.right': 'chevron-right',
-} as IconMapping;
+  'chevron.left': 'chevron-left',
+  'heart.text.square.fill': 'volunteer-activism',
+  'person.2.fill': 'people',
+  'person.fill': 'person',
+  'plus': 'add',
+  'clock.arrow.circlepath': 'history',
+  'chevron.down': 'keyboard-arrow-down',
+  'bell.fill': 'notifications',
+  'xmark': 'close',
+  'checkmark': 'check',
+  'arrow.right': 'arrow-forward',
+  'search': 'search',
+  'sliders': 'tune',
+  'hand.holding.dollar': 'volunteer-activism',
+  'graduationcap': 'school',
+  'heart.fill': 'favorite',
+  'arrow.left': 'arrow-back',
+  'arrow.up': 'arrow-upward',
+  'arrow.down': 'arrow-downward',
+  'pencil': 'edit',
+  'camera': 'camera-alt',
+  'check.circle.fill': 'check-circle',
+  'book.fill': 'book',
+  'mappin.and.ellipse': 'location-on',
+} as Partial<IconMapping>;
 
 /**
  * An icon component that uses native SF Symbols on iOS, and Material Icons on Android and web.

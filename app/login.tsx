@@ -16,7 +16,7 @@ export default function LoginScreen() {
 
     const handleLogin = () => {
         if (email && password) {
-            router.push('/otp');
+            router.push('/(student-tabs)');
         }
     };
 

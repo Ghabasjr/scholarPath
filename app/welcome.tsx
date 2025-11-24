@@ -1,4 +1,5 @@
 import GradientButton from "@/components/GradientButton/GradientButton";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from "expo-router";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
@@ -25,12 +26,35 @@ export default function Welcome() {
             <View style={styles.bottomButtons}>
                 <GradientButton
                     text={"Complete KYC"}
-                    onPress={() => router.push("/completeProfile")}
-                />
+                    onPress={async () => {
+                        try {
+                            const role = await AsyncStorage.getItem('userRole');
+                            if (role === 'donor') {
+                                router.push("/(donor-tabs)/index");
+                            } else {
+                                router.push("/completeProfile");
+                            }
+                        } catch (e) {
+                            console.error('Failed to get role', e);
+                            router.push("/completeProfile");
+                        }
+                    }} />
 
                 <TouchableOpacity
                     style={{ marginTop: 16 }}
-                    onPress={() => router.push("/(tabs)")}
+                    onPress={async () => {
+                        try {
+                            const role = await AsyncStorage.getItem('userRole');
+                            if (role === 'donor') {
+                                router.push("/(donor-tabs)/index");
+                            } else {
+                                router.push("/(student-tabs)/index");
+                            }
+                        } catch (e) {
+                            console.error('Failed to get role', e);
+                            router.push("/(student-tabs)/index"); // Default fallback
+                        }
+                    }}
                 >
                     <Text style={styles.skipText}>Skip for now</Text>
                 </TouchableOpacity>

@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import {
@@ -17,8 +18,13 @@ export default function RoleSelectionScreen() {
     const router = useRouter();
     const [selectedRole, setSelectedRole] = useState<Role>('student');
 
-    const handleContinue = () => {
-        router.push('/signUp');
+    const handleContinue = async () => {
+        try {
+            await AsyncStorage.setItem('userRole', selectedRole);
+            router.push('/signUp');
+        } catch (e) {
+            console.error('Failed to save role', e);
+        }
     };
 
     const handleBack = () => {
